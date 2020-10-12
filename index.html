@@ -3,10 +3,36 @@
     <head>
 	<meta charset="UTF-8">
         <title>Todo</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1>ToDo website</h1>
+        <div class="nav">
+            <ul>
+                <lh>
+                    <div class="material-icons md-lh">calendar_today</div>
+                    <strong> Days</strong>
+                </lh>
+                <li>Today</li>
+                <li>Tomorrow</li>
+                <li>Upcoming</li>
+            </ul>
+            <ul>
+                <lh>
+                    <div class="material-icons md-lh">all_inbox</div>
+                    <strong> Tasks</strong>
+                </lh>
+                <li>Project <div class="material-icons md-del">delete_outline</div></li>
+                <li>Assignment <div class="material-icons md-del">delete_outline</div></li>
+                <li>Trip <div class="material-icons md-del">delete_outline</div></li>
+                <li>Holidays <div class="material-icons md-del">delete_outline</div></li>
+            </ul>
+            <div class="material-icons md-32">add_circle_outline</div>
+        </div>
+        <div class="main">
+            <div class="greeting">Hello There!</div>
+        </div>  
         <script async src="main.js"></script>
     </body>
 </html>
