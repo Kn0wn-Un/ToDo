@@ -23,6 +23,18 @@ body{
     float: right;
     right: 5px;
 }
+.material-icons.md-priority {
+    font-size: 27px;
+    position: relative;
+    top: 6px;
+    margin-left: 10px;
+    color: orangered;
+}
+.material-icons.md-unchecked {
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
 .nav{
     background-color:rgb(229, 229, 229);
     width: 300px;
@@ -39,12 +51,42 @@ body{
 .nav li{
     margin-top: 15px;
     cursor: pointer;
+    padding: 5px;
+}
+.nav li:hover{
+    background-color: royalblue;
+    color: white;
+}
+.add-task{
+    cursor: pointer;
 }
 .main{
     width: 100%;
-    text-align: center;
     overflow: auto;
 }
 .greeting{
+    text-align: center;
     font-size: 64px;
+}
+.expand-tasks{
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.task-name{
+    font-size: 23px;
+    border-bottom: 2px solid black;
+}
+.task-todo{
+    list-style: none;
+    background-color: rgb(229, 229, 229); 
+}
+.task-todo li{  
+    margin: 10px 0px 10px 0px;
+    cursor: pointer;
+}
+code{
+    background-color: black;
+    color: white;
+    margin-left: 10px;
 }
