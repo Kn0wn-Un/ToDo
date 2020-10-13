@@ -10,9 +10,12 @@ body{
     height: 100%;
     font-size: 21px;
 }
+.material-icons{
+    cursor: pointer;
+}
 .material-icons.md-32 {
     font-size: 32px;
-    margin-left: 39px;
+    margin-left: 42px;
 }
 .material-icons.md-lh {
     position: relative;
@@ -30,10 +33,14 @@ body{
     margin-left: 10px;
     color: orangered;
 }
-.material-icons.md-unchecked {
+.material-icons.md-radio {
     position: relative;
     top: 5px;
     margin-right: 10px;
+}
+.material-icons.md-clear{
+    font-size: 42px;
+    align-self:flex-start;
 }
 .nav{
     background-color:rgb(229, 229, 229);
@@ -72,11 +79,14 @@ body{
     overflow: auto;
     order: 2;
 }
+.main .done{
+    color: rgba(0, 0, 0, 0.5);
+}
 .greeting{
     text-align: center;
     font-size: 64px;
 }
-.expand-tasks{
+.show-task{
     margin: 50px;
     display: flex;
     flex-direction: column;
@@ -88,6 +98,7 @@ body{
 .task-todo{
     list-style: none;
     background-color: rgb(229, 229, 229); 
+    margin-top: 0px;
 }
 .task-todo li{  
     margin: 10px 0px 10px 0px;
@@ -96,6 +107,7 @@ body{
 .todos:hover{  
     border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
+
 code{
     font-size: 18px;
     background-color: black;
