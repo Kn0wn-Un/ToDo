@@ -8,7 +8,7 @@ body{
     display: flex;
     flex-direction: row;
     height: 100%;
-    font-size: 20px;
+    font-size: 21px;
 }
 .material-icons.md-32 {
     font-size: 32px;
@@ -42,10 +42,10 @@ body{
 }
 .nav lh{
     border-bottom: 2px solid black;
-    font-size: 23px;
+    font-size: 24px;
 }
 .nav ul{
-    margin-top: 25px;
+    margin-top: 24px;
     list-style: none;
 }
 .nav li{
@@ -59,6 +59,12 @@ body{
 }
 .add-task{
     cursor: pointer;
+}
+.days-list{
+    font-size: 21px;
+}
+.tasks-list{
+    font-size: 21px;
 }
 .main{
     width: 100%;
@@ -74,7 +80,7 @@ body{
     flex-direction: column;
 }
 .task-name{
-    font-size: 23px;
+    font-size: 24px;
     border-bottom: 2px solid black;
 }
 .task-todo{
@@ -85,7 +91,11 @@ body{
     margin: 10px 0px 10px 0px;
     cursor: pointer;
 }
+.todos:hover{  
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
 code{
+    font-size: 18px;
     background-color: black;
     color: white;
     margin-left: 10px;

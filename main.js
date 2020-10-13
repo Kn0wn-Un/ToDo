@@ -1,1 +1,1 @@
-console.log("inital commit");
+console.log(document.body);
