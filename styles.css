@@ -12,7 +12,7 @@ body{
 }
 .material-icons.md-32 {
     font-size: 32px;
-    margin-left: 35px;
+    margin-left: 39px;
 }
 .material-icons.md-lh {
     position: relative;
@@ -38,6 +38,7 @@ body{
 .nav{
     background-color:rgb(229, 229, 229);
     width: 300px;
+    order: 1;
     overflow: auto;
 }
 .nav lh{
@@ -69,6 +70,7 @@ body{
 .main{
     width: 100%;
     overflow: auto;
+    order: 2;
 }
 .greeting{
     text-align: center;
