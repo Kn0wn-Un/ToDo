@@ -2,6 +2,9 @@ const navDom = (()=>{
     const tasks = ['Project', 'Assignment', 'Trip', 'Holidays'];
     const days = ['Today', 'Tomorrow', 'Upcoming'];
     const body = document.body;
+
+
+
     const addNav = (daysList, tasksList) => {
        let nav = document.createElement('div');
        nav.classList.add('nav');
@@ -13,6 +16,9 @@ const navDom = (()=>{
        nav.appendChild(addTask);
        body.appendChild(nav);
     };
+    
+
+
     const createLists = (isTask, arr) => {
         let ul = document.createElement('ul');
         let lh = document.createElement('lh');
@@ -22,30 +28,37 @@ const navDom = (()=>{
         if(isTask){
             ul.classList.add('tasks-list');
             cal.innerHTML='all_inbox';
-            strong.innerHTML = 'Tasks';
+            strong.innerHTML = ' Tasks';
         }
         else{
             ul.classList.add('days-list');
             cal.innerHTML='calendar_today';
-            strong.innerHTML = 'Days';
+            strong.innerHTML = ' Days';
         }
         lh.appendChild(cal);
         lh.appendChild(strong);
-        for(let i = 0; i < arr.length(); i++){
+        ul.appendChild(lh);
+        for(let i = 0; i < arr.length; i++){
             let li = document.createElement('li');
             li.innerHTML = arr[i];
             if(isTask){
                 let delBtn = document.createElement('span');
+                delBtn.innerHTML = 'delete_outline';
                 delBtn.classList.add('material-icons', 'md-del');
                 li.appendChild(delBtn);
             }
             ul.appendChild(li);
         }
+        return ul;
     };
+
+
+
     const createNav = () => {
         let daysList = createLists(false, days);
         let tasksList = createLists(true, tasks);
         addNav(daysList, tasksList);
     };
+    return {createNav}
 })();
-export default navDom.createNav();
+export default navDom;

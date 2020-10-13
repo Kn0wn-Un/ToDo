@@ -1,2 +1,2 @@
-import createNav from "/navdom.js";
-console.log(createNav);
+import navDom from "./navdom.js";
+navDom.createNav();
