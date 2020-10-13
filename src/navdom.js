@@ -59,6 +59,9 @@ const navDom = (()=>{
         let tasksList = createLists(true, tasks);
         addNav(daysList, tasksList);
     };
+
+
+    
     return {createNav}
 })();
 export default navDom;

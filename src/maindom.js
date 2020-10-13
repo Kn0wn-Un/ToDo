@@ -7,12 +7,18 @@ const mainDom = (()=>{
                 }
             };
     const body = document.body;
+
+
+
     const createMain = () => {
         let main = document.createElement('div');   
         main.classList.add('main');
         main.innerHTML = '';
         body.appendChild(main);
     };
+
+
+
     const addGreet = ()=>{
         let main = document.querySelector('.main');  
         let greet = document.createElement('div');
@@ -20,6 +26,9 @@ const mainDom = (()=>{
         greet.innerHTML = 'Hello There!';
         main.appendChild(greet);
     };
+
+
+
     const dispTask = (task) => {
         let main = document.querySelector('.main');
         let tasksDiv = document.createElement('div');
@@ -61,6 +70,9 @@ const mainDom = (()=>{
         tasksDiv.appendChild(ul);
         main.appendChild(tasksDiv);
     };
+
+
+
     const updateMain = (task)=>{
         let main = document.querySelector('.main');  
         main.innerHTML = '';
@@ -68,6 +80,9 @@ const mainDom = (()=>{
         dispTask(task);
         dispTask(tmrTodos);
     };
+
+
+    
     return {createMain, updateMain}
 })();
 export default mainDom;
