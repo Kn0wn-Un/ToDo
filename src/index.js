@@ -1,1 +1,2 @@
-console.log("inital commit")
+import createNav from "/navdom.js";
+console.log(createNav);
