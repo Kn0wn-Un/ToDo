@@ -1,6 +1,6 @@
 import navDom from "./navdom.js";
 import mainDom from "./maindom.js";
-import navInput from "./navinput"
+import navButtons from "./navinput"
 const todayTodos = {'taskName': 'Today',
 'todos': {  'Attend ME class': false, 
         'Attend UP class':false, 
@@ -11,4 +11,5 @@ const todayTodos = {'taskName': 'Today',
 mainDom.createMain();
 mainDom.updateMain(todayTodos);
 navDom.createNav();
-navInput.addHandler();
+navButtons.inpHandler();
+navButtons.delHandler();

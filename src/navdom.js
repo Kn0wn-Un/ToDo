@@ -45,6 +45,7 @@ const navDom = (()=>{
                 let delBtn = document.createElement('span');
                 delBtn.innerHTML = 'delete_outline';
                 delBtn.classList.add('material-icons', 'md-del');
+                li.id = i.toString();
                 li.appendChild(delBtn);
             }
             ul.appendChild(li);
@@ -65,14 +66,25 @@ const navDom = (()=>{
     const inputTask = ()=> {
         let taskList = document.querySelector('.tasks-list');
         let input = document.createElement('input');
-        let btn = document.createElement('div');
-        btn.innerHTML = "Add";
+        let addBtn = document.createElement('div');
+        let addTask = document.querySelector('#addTask');
+        nav.removeChild(addTask);
+        addBtn.classList.add('material-icons', 'navinput');
+        addBtn.innerHTML = "check";
+        let delBtn = document.createElement('span');
+        delBtn.classList.add('material-icons', 'navinput');
+        delBtn.innerHTML = "clear";
         taskList.appendChild(input);
-        taskList.appendChild(btn);
-        return {btn , input};
+        taskList.appendChild(addBtn);
+        taskList.appendChild(delBtn);
+        input.focus();
+        return {addBtn,  delBtn, input};
     };
 
-    
-    return {createNav, inputTask, tasks}
+    const removeTask = (li) => {
+        let taskList = document.querySelector('.tasks-list');
+        taskList.removeChild(li);
+    }
+    return {createNav, inputTask, tasks, removeTask}
 })();
 export default navDom;
