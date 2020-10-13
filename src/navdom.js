@@ -1,20 +1,20 @@
 const navDom = (()=>{
-    const tasks = ['Project', 'Assignment', 'Trip', 'Holidays'];
+    let tasks = ['Project', 'Assignment', 'Trip', 'Holidays'];
     const days = ['Today', 'Tomorrow', 'Upcoming'];
     const body = document.body;
-
+    const nav = document.querySelector('.nav');
 
 
     const addNav = (daysList, tasksList) => {
-       let nav = document.createElement('div');
-       nav.classList.add('nav');
-       nav.appendChild(daysList);
-       nav.appendChild(tasksList); 
-       let addTask = document.createElement('div');
-       addTask.classList.add('add-task', 'material-icons', 'md-32');
-       addTask.innerHTML = 'add_circle_outline';
-       nav.appendChild(addTask);
-       body.appendChild(nav);
+        nav.innerHTML = '';
+        nav.appendChild(daysList);
+        nav.appendChild(tasksList); 
+        let addTask = document.createElement('div');
+        addTask.id = 'addTask'
+        addTask.classList.add('add-task', 'material-icons', 'md-32');
+        addTask.innerHTML = 'add_circle_outline';
+        nav.appendChild(addTask);
+        body.appendChild(nav);
     };
     
 
@@ -61,7 +61,18 @@ const navDom = (()=>{
     };
 
 
+
+    const inputTask = ()=> {
+        let taskList = document.querySelector('.tasks-list');
+        let input = document.createElement('input');
+        let btn = document.createElement('div');
+        btn.innerHTML = "Add";
+        taskList.appendChild(input);
+        taskList.appendChild(btn);
+        return {btn , input};
+    };
+
     
-    return {createNav}
+    return {createNav, inputTask, tasks}
 })();
 export default navDom;
