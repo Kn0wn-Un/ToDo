@@ -27,16 +27,12 @@ body{
     right: 5px;
 }
 .material-icons.md-priority-red, .material-icons.md-priority-green {
-    font-size: 30px;
     position: relative;
     top: 6px;
     margin-left: 10px;
     color: red;
 }
 .material-icons.md-priority-green {
-    position: relative;
-    top: 10px;
-    font-size: 33px;
     color: green;
 }
 .material-icons.md-radio {
@@ -113,6 +109,7 @@ body{
 .task-todo li{  
     margin: 10px 0px 10px 0px;
     cursor: pointer;
+    min-height: 40px;
 }
 .todos:hover{  
     border-bottom: 2px solid rgba(0, 0, 0, 0.3);
@@ -135,4 +132,25 @@ input {
 }
 input:focus {
     border-color: green
+}
+.todo-select {
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+.info {
+    margin: 20px 0px 20px 45px;
+}
+.notes {
+    margin: 0px 0px 10px 0px;
+}
+.notes-head, .pri-head {
+    text-decoration: underline;
+}
+.note {
+    font-style: italic;
+}
+.pri-imp{
+    color: red;
+}
+.pri-less{
+    color: green;
 }
