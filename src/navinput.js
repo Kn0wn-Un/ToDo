@@ -9,14 +9,12 @@ const navButtons= (() => {
                 if(form.input.value){
                     navDom.tasks.push(form.input.value);
                     navDom.createNav();//this and 
-                    inpHandler();//this and
-                    delHandler(); //this ,bind these methods later
+                    taskHandler();//this, bind
                 }
             });
             form.delBtn.addEventListener('click', ()=>{
                     navDom.createNav();//this and 
-                    inpHandler();//this and
-                    delHandler(); //this ,bind these methods later
+                    taskHandler();// this, bind
             });
         });
     };
@@ -29,11 +27,14 @@ const navButtons= (() => {
                 navDom.removeTask(delbtns[i].parentNode);
                 console.log(navDom.tasks);
                 navDom.createNav();//this and 
-                inpHandler();//this and
-                delHandler(); //this, bind these methods later
+                taskHandler();//this, bind
             });
         }
     }
-    return { inpHandler, delHandler }
+    const taskHandler = ()=>{
+        inpHandler();
+        delHandler();
+    }
+    return { taskHandler }
 })();
 export default navButtons;

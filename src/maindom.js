@@ -46,7 +46,7 @@ const mainDom = (()=>{
             let li = document.createElement('li');
             let radio = document.createElement('div');
             radio.classList.add('material-icons', 'md-radio');
-            if(todos[i]){
+            if(todos[i].done){
                 radio.innerHTML = 'radio_button_checked';
                 li.classList.add('done');
             }
@@ -55,8 +55,23 @@ const mainDom = (()=>{
             let todo = document.createElement('span');
             todo.classList.add('todos');
             todo.innerHTML = i;
+            let date = document.createElement('code');
+            date.innerHTML = todos[i]['date'];
             li.appendChild(radio);
             li.appendChild(todo);
+            li.appendChild(date);
+            let pri = document.createElement('div');
+            pri.classList.add('material-icons');
+            pri.innerHTML = 'local_offer priority_high';
+            if(todos[i]['priority'] > 0){
+                pri.classList.add('md-priority-green');
+                pri.innerHTML = 'label'
+                li.appendChild(pri);
+            }
+            else if(todos[i]['priority'] < 0){
+                pri.classList.add('md-priority-red');
+                li.appendChild(pri);
+            }
             ul.appendChild(li);
         }
         let li = document.createElement('li');
@@ -64,6 +79,7 @@ const mainDom = (()=>{
         addTodo.classList.add('add-task', 'material-icons');
         addTodo.innerHTML = 'add_circle_outline';
         li.appendChild(addTodo);
+        li.classList.add('add-todo');
         ul.appendChild(li);
         tasksDiv.appendChild(taskName);
         tasksDiv.appendChild(clear);
@@ -78,7 +94,6 @@ const mainDom = (()=>{
         main.innerHTML = '';
         addGreet();
         dispTask(task);
-        dispTask(tmrTodos);
     };
 
 
