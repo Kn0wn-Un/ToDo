@@ -55,11 +55,13 @@ const mainDom = (()=>{
             let todo = document.createElement('span');
             todo.classList.add('todos');
             todo.innerHTML = i;
-            let date = document.createElement('code');
-            date.innerHTML = todos[i]['date'];
             li.appendChild(radio);
             li.appendChild(todo);
-            li.appendChild(date);
+            if(todos[i]['date'] != ''){
+                let date = document.createElement('code');
+                date.innerHTML = todos[i]['date'];
+                li.appendChild(date);
+            }
             let pri = document.createElement('div');
             pri.classList.add('material-icons');
             pri.innerHTML = 'local_offer priority_high';
