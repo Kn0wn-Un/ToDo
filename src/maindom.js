@@ -89,6 +89,56 @@ const mainDom = (()=>{
 
 
 
+    const dispInfo = (li, todo)=> {
+        let td = li.querySelector('span');
+        td.classList.add('todo-select'); 
+        let info = document.createElement('div');
+        info.classList.add('info');
+        let notes = document.createElement('div');
+        notes.classList.add('notes');
+        let noteHead = document.createElement('span');
+        noteHead.classList.add('notes-head');
+        noteHead.innerHTML = 'Notes :';
+        let note = document.createElement('span');
+        note.classList.add('note');
+        if(todo['notes'] === '')
+            note.innerHTML = ' oops no notes :(';
+        else 
+            note.innerHTML = ' ' + todo['notes'];
+        let priority = document.createElement('div');
+        priority.classList.add('priority');
+        let priHead = document.createElement('span');
+        priHead.classList.add('pri-head');
+        priHead.innerHTML = 'Priority :';
+        let pri = document.createElement('span');
+        if(todo['priority'] > 0){
+            pri.classList.add('pri-less');
+            pri.innerHTML = ' less important';
+        }
+        else if(todo['priority'] < 0){
+            pri.classList.add('pri-imp');
+            pri.innerHTML = ' Important!';
+        }
+        else
+            pri.innerHTML = ' No priority specified';
+        notes.appendChild(noteHead);
+        notes.appendChild(note);
+        priority.appendChild(priHead);
+        priority.appendChild(pri);
+        info.appendChild(notes);
+        info.appendChild(priority);
+        li.appendChild(info);
+    };
+
+
+
+    const toggleDone = (isDone, li)=> {
+        if(isDone)  li.classList.remove('done');
+        else    li.classList.add('done');
+    };
+
+    
+
     const updateMain = (task)=>{
         let main = document.querySelector('.main');  
         main.innerHTML = '';
@@ -98,6 +148,6 @@ const mainDom = (()=>{
 
 
     
-    return {createMain, updateMain}
+    return {createMain, updateMain, dispInfo, toggleDone}
 })();
 export default mainDom;

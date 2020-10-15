@@ -81,6 +81,8 @@ const navDom = (()=>{
         return {addBtn,  delBtn, input};
     };
 
+    
+
     const removeTask = (li) => {
         let taskList = document.querySelector('.tasks-list');
         taskList.removeChild(li);

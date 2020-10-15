@@ -32,8 +32,8 @@ const mainInput = (() => {
             let todo = notDone[i].querySelector('span').innerHTML;
             checkBox.addEventListener('click', ()=>{
                 todayTodos['todos'][todo]['done'] = true;
-                mainDom.updateMain(todayTodos);//1
-                handleCheck(); //3, fking bind these 3
+                mainDom.toggleDone(false, checkBox.parentNode);//1
+                handleCheck(); //3,  bind these 3
             });
         }
     };
@@ -44,15 +44,10 @@ const mainInput = (() => {
             let todo = done[i].querySelector('span').innerHTML;
             checkBox.addEventListener('click', ()=>{
                 todayTodos['todos'][todo]['done'] = false;
-                mainDom.updateMain(todayTodos);//1
-                handleCheck() //2, fking bind these 3
+                mainDom.toggleDone(true, checkBox.parentNode);//1
+                handleCheck(); //2,  bind these 3
             });
         }
-    };
-    const handleCheck = ()=>{
-        markDone();
-        undoDone();
-        handleClear();
     };
     const handleClear = ()=>{
         let task = document.querySelector('.show-task');
@@ -65,9 +60,34 @@ const mainInput = (() => {
                 console.log(todayTodos['todos']);
             }
             mainDom.updateMain(todayTodos);//1
-            handleCheck() //2, fking bind these 3
+            handleCheck(); //2,  bind these 3
         });
-    }
+    };
+    const showTodo = ()=> {
+        let task = document.querySelector('.show-task');
+        let todos = task.querySelectorAll('span');
+        for(let i = 0; i < todos.length; i++){
+            todos[i].addEventListener('click', ()=>{
+                let obj = todayTodos['todos'][todos[i].innerHTML];
+                if(todos[i].parentNode.querySelector('.info')) {
+                    todos[i].classList.remove('todo-select');
+                    todos[i].parentNode.removeChild(
+                        todos[i].parentNode.querySelector('.info')
+                    );
+                    handleCheck();
+                    return;
+                }
+                mainDom.dispInfo(todos[i].parentNode, obj);//remove obj dependency
+                handleCheck();
+            });
+        }
+    };
+    const handleCheck = ()=>{
+        markDone();
+        undoDone();
+        handleClear();
+        showTodo();
+    };
     return {handleCheck}
 })();
 export default mainInput;
