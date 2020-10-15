@@ -133,11 +133,19 @@ const mainDom = (()=>{
 
 
     const toggleDone = (isDone, li)=> {
-        if(isDone)  li.classList.remove('done');
-        else    li.classList.add('done');
+        if(isDone){
+            li.classList.remove('done');
+            li.querySelector('.md-radio').innerHTML = 'radio_button_unchecked';
+        }
+        else{
+            li.classList.add('done');
+            li.querySelector('.md-radio').innerHTML = 'radio_button_checked';
+        }    
     };
 
-    
+    const deleteDone = (par, li)=> {
+        par.removeChild(li);
+    };
 
     const updateMain = (task)=>{
         let main = document.querySelector('.main');  
@@ -146,8 +154,9 @@ const mainDom = (()=>{
         dispTask(task);
     };
 
+    createMain();
 
     
-    return {createMain, updateMain, dispInfo, toggleDone}
+    return {updateMain, dispInfo, toggleDone, deleteDone}
 })();
 export default mainDom;

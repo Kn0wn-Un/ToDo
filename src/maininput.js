@@ -25,27 +25,25 @@ const mainInput = (() => {
         }
         return done;
     };
-    const markDone = ()=> {
-        let notDone = getNotDone();
-        for(let i = 0; i < notDone.length; i++){
-            let checkBox = notDone[i].querySelector('div');
-            let todo = notDone[i].querySelector('span').innerHTML;
+    const handleCheck = ()=> {
+        let task = document.querySelector(".show-task");
+        let li = task.querySelectorAll('li');
+        for(let i = 0; i < li.length - 1; i++){
+            let checkBox = li[i].querySelector('.md-radio');
+            console.log(checkBox);
+            let todo = li[i].querySelector('span').innerHTML;
             checkBox.addEventListener('click', ()=>{
-                todayTodos['todos'][todo]['done'] = true;
-                mainDom.toggleDone(false, checkBox.parentNode);//1
-                handleCheck(); //3,  bind these 3
-            });
-        }
-    };
-    const undoDone = ()=>{
-        let done = getDone();
-        for(let i = 0; i < done.length; i++){
-            let checkBox = done[i].querySelector('div');
-            let todo = done[i].querySelector('span').innerHTML;
-            checkBox.addEventListener('click', ()=>{
-                todayTodos['todos'][todo]['done'] = false;
-                mainDom.toggleDone(true, checkBox.parentNode);//1
-                handleCheck(); //2,  bind these 3
+               if(li[i].className === 'done') {
+                    todayTodos['todos'][todo]['done'] = false;
+                    console.log(todayTodos['todos']);
+                    mainDom.toggleDone(true, li[i]);
+                    return;
+                }
+                else {
+                    todayTodos['todos'][todo]['done'] = true;
+                    console.log(todayTodos['todos']);
+                    mainDom.toggleDone(false, li[i]);
+                } 
             });
         }
     };
@@ -56,11 +54,10 @@ const mainInput = (() => {
             let done = getDone();
             for(let i = 0; i < done.length; i++){
                 let todo = done[i].querySelector('span').innerHTML;
+                mainDom.deleteDone(done[i].parentNode, done[i]);
                 delete todayTodos['todos'][todo];
                 console.log(todayTodos['todos']);
             }
-            mainDom.updateMain(todayTodos);//1
-            handleCheck(); //2,  bind these 3
         });
     };
     const showTodo = ()=> {
@@ -74,20 +71,17 @@ const mainInput = (() => {
                     todos[i].parentNode.removeChild(
                         todos[i].parentNode.querySelector('.info')
                     );
-                    handleCheck();
                     return;
                 }
                 mainDom.dispInfo(todos[i].parentNode, obj);//remove obj dependency
-                handleCheck();
             });
         }
     };
-    const handleCheck = ()=>{
-        markDone();
-        undoDone();
+    const addHandlers = ()=>{
+        handleCheck();
         handleClear();
         showTodo();
     };
-    return {handleCheck}
+    return {addHandlers}
 })();
 export default mainInput;

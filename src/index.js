@@ -10,9 +10,8 @@ const todayTodos = {'taskName': 'Today',
         'Attend B class':{'notes': '', 'date':'15 Oct', 'priority': 0, 'done':false}, 
     }
 };
-mainDom.createMain();
 mainDom.updateMain(todayTodos);
 navDom.createNav();
 navButtons.taskHandler();
-mainInput.handleCheck();
+mainInput.addHandlers();
 export default todayTodos;
