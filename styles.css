@@ -26,12 +26,18 @@ body{
     float: right;
     right: 5px;
 }
-.material-icons.md-priority {
-    font-size: 27px;
+.material-icons.md-priority-red, .material-icons.md-priority-green {
+    font-size: 30px;
     position: relative;
     top: 6px;
     margin-left: 10px;
-    color: orangered;
+    color: red;
+}
+.material-icons.md-priority-green {
+    position: relative;
+    top: 10px;
+    font-size: 33px;
+    color: green;
 }
 .material-icons.md-radio {
     position: relative;
@@ -84,6 +90,7 @@ body{
 }
 .main .done{
     color: rgba(0, 0, 0, 0.5);
+    text-decoration: line-through;
 }
 .greeting{
     text-align: center;
@@ -115,6 +122,7 @@ code {
     background-color: black;
     color: white;
     margin-left: 10px;
+    padding: 0px 1px 0px 1px;
 }
 input {
     outline: 0;
