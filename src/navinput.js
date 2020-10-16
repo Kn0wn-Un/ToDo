@@ -1,4 +1,6 @@
 import navDom from "./navdom.js";
+import mediator from "./mediator.js"
+import objectFns from "./object.js"
 const navButtons= (() => {
     const inpHandler = () => {
         const addTask = document.querySelector('#addTask');
@@ -6,14 +8,12 @@ const navButtons= (() => {
             let form = navDom.inputTask();
             form.addBtn.addEventListener('click', ()=>{
                 if(form.input.value){
-                    navDom.tasks.push(form.input.value);
-                    navDom.createNav();//this and 
-                    taskHandler();//this, bind
+                    objectFns.addTasks(form.input.value);
+                    mediator.navRefresh();//remove this
                 }
             });
             form.delBtn.addEventListener('click', ()=>{
-                    navDom.createNav();//this and 
-                    taskHandler();// this, bind
+                navDom.removeInput();
             });
         });
     };
@@ -21,12 +21,8 @@ const navButtons= (() => {
         let delbtns = document.querySelectorAll('.md-del');
         for(let i = 0; i < delbtns.length; i++){
             delbtns[i].addEventListener('click', ()=>{
-                let id = parseInt(delbtns[i].parentNode.id);
-                navDom.tasks.splice(id, 1);
+                objectFns.delTask(delbtns[i].previousSibling.textContent);
                 navDom.removeTask(delbtns[i].parentNode);
-                console.log(navDom.tasks);
-                navDom.createNav();//this and 
-                taskHandler();//this, bind
             });
         }
     }

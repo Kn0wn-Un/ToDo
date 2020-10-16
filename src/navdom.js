@@ -1,5 +1,6 @@
+import objectFns from './object.js';
 const navDom = (()=>{
-    let tasks = ['Project', 'Assignment', 'Trip', 'Holidays'];
+    //let tasks = ['Project', 'Assignment', 'Trip', 'Holidays'];
     const days = ['Today', 'Tomorrow', 'Upcoming'];
     const body = document.body;
     const nav = document.querySelector('.nav');
@@ -40,7 +41,10 @@ const navDom = (()=>{
         ul.appendChild(lh);
         for(let i = 0; i < arr.length; i++){
             let li = document.createElement('li');
-            li.innerHTML = arr[i];
+            let tName = document.createElement('span');
+            tName.classList.add('nav-task');
+            tName.innerHTML = arr[i];
+            li.appendChild(tName);
             if(isTask){
                 let delBtn = document.createElement('span');
                 delBtn.innerHTML = 'delete_outline';
@@ -57,7 +61,7 @@ const navDom = (()=>{
 
     const createNav = () => {
         let daysList = createLists(false, days);
-        let tasksList = createLists(true, tasks);
+        let tasksList = createLists(true, objectFns.getTasks());
         addNav(daysList, tasksList);
     };
 
@@ -68,7 +72,7 @@ const navDom = (()=>{
         let input = document.createElement('input');
         let addBtn = document.createElement('div');
         let addTask = document.querySelector('#addTask');
-        nav.removeChild(addTask);
+        addTask.style.visibility = 'hidden';
         addBtn.classList.add('material-icons', 'navinput');
         addBtn.innerHTML = "check";
         let delBtn = document.createElement('span');
@@ -81,12 +85,26 @@ const navDom = (()=>{
         return {addBtn,  delBtn, input};
     };
 
+
+
+    const removeInput = ()=>{
+        let taskList = document.querySelector('.tasks-list');
+        let input = taskList.querySelector('input');
+        taskList.removeChild(input);
+        let addBtn = taskList.querySelector('div');
+        taskList.removeChild(addBtn);
+        let delBtn = taskList.querySelector('.navinput');
+        taskList.removeChild(delBtn);
+        let addTask = document.querySelector('#addTask');
+        addTask.style.visibility = 'visible';
+    }
+
     
 
     const removeTask = (li) => {
         let taskList = document.querySelector('.tasks-list');
         taskList.removeChild(li);
     }
-    return {createNav, inputTask, tasks, removeTask}
+    return {createNav, inputTask, removeTask, removeInput}
 })();
 export default navDom;
