@@ -1,5 +1,6 @@
-import todayTodos from './index.js';
+import todayTodos from "./index.js";
 import mainDom from "./maindom.js";
+import objectFns from "./object.js"
 const mainInput = (() => {
     const getNotDone = ()=> {
         let main = document.querySelector(".main");
@@ -77,10 +78,34 @@ const mainInput = (() => {
             });
         }
     };
+    const addTodo = ()=>{
+        let task = document.querySelector('.show-task');
+        let addLi = task.querySelector('.add-todo');
+        let taskName = task.querySelector('.task-name').innerHTML;
+        let add = task.querySelector('.add-task');
+        add.addEventListener('click', ()=>{
+            add.style.visibility = 'hidden';
+            let btns = mainDom.dispForm(task);
+            btns.cancel.addEventListener('click', ()=>{
+                addLi.removeChild(addLi.querySelector('.todo-input'));
+                add.style.visibility = 'visible';
+            });
+            btns.add.addEventListener('click', ()=>{
+                let newTodo = mainDom.getForm();
+                if(newTodo === '')  return;
+                objectFns.addObj(todayTodos, newTodo);
+                console.log(todayTodos);
+                //addLi.removeChild(addLi.querySelector('.todo-input'));
+                //add.style.visibility = 'visible';
+                mainDom.updateMain(todayTodos);
+            });
+        });
+    }
     const addHandlers = ()=>{
         handleCheck();
         handleClear();
         showTodo();
+        addTodo();
     };
     return {addHandlers}
 })();

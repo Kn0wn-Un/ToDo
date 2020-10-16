@@ -1,3 +1,4 @@
+import date from 'date-and-time';
 const mainDom = (()=>{
     const tmrTodos = {'taskName': 'Tomorrow',
         'todos': {  'Attend ME class': true, 
@@ -65,12 +66,12 @@ const mainDom = (()=>{
             let pri = document.createElement('div');
             pri.classList.add('material-icons');
             pri.innerHTML = 'local_offer priority_high';
-            if(todos[i]['priority'] > 0){
+            if(todos[i]['priority'] === '1'){
                 pri.classList.add('md-priority-green');
                 pri.innerHTML = 'label'
                 li.appendChild(pri);
             }
-            else if(todos[i]['priority'] < 0){
+            else if(todos[i]['priority'] === '-1'){
                 pri.classList.add('md-priority-red');
                 li.appendChild(pri);
             }
@@ -156,9 +157,89 @@ const mainDom = (()=>{
         dispTask(task);
     };
 
+    const dispForm = (task)=>{
+        let li = task.querySelector('.add-todo');
+        let todoInput = document.createElement('div');
+        todoInput.classList.add('todo-input');
+
+        let inputName = document.createElement('input');
+        inputName.placeholder = 'I want to..';
+        inputName.classList.add('input-name');
+
+        let dateHead = document.createElement('div');
+        dateHead.style.marginTop = '5px';
+        dateHead.innerHTML = 'by, ';
+        let inputDate = document.createElement('input');
+        inputDate.classList.add('input-date');
+        inputDate.type = 'date';
+        let now = date.format(new Date(), 'YYYY-MM-DD'); 
+        inputDate.min = now;
+
+        let inputPri = document.createElement('select');
+        inputPri.classList.add('input-pri');
+        let highPri = document.createElement('option');
+        highPri.innerHTML = 'High';
+        highPri.value = '-1';
+        inputPri.add(highPri);
+        let lowPri = document.createElement('option');
+        lowPri.innerHTML = 'Low';
+        lowPri.value = '1';
+        inputPri.add(lowPri);
+        let noPri = document.createElement('option');
+        noPri.innerHTML = 'No Priority';
+        noPri.selected = true;
+        noPri.value = '0';
+        inputPri.add(noPri);
+
+        let inputNote = document.createElement('textarea');
+        inputNote.classList.add('input-note');
+        inputNote.placeholder = 'Add Notes';
+
+        let btn = document.createElement('div');
+        btn.classList.add('btn');
+        let add = document.createElement('div');
+        add.innerHTML = 'add todo';
+        add.classList.add('add-btn');
+        let cancel = document.createElement('div');
+        cancel.innerHTML = 'Cancel';
+        cancel.classList.add('cancel-btn');
+        btn.appendChild(add);
+        btn.appendChild(cancel);
+        todoInput.appendChild(inputName);
+        todoInput.appendChild(dateHead);
+        todoInput.appendChild(inputDate);
+        todoInput.appendChild(inputPri);
+        todoInput.appendChild(inputNote);
+        todoInput.appendChild(btn);
+        li.appendChild(todoInput);
+        return {add, cancel};
+    }
+
+
+
+    const getForm = ()=> {
+        let todoInput = document.querySelector('.todo-input');
+        let todoName = todoInput.querySelector('.input-name');
+        if (todoName === '')  
+        {
+            todoName.classList.add('input-required');
+            return '';
+        }
+        todoName = todoName.value;
+        let todoDate = todoInput.querySelector('.input-date').value;
+        if (!todoDate)  todoDate = '';
+        let todoPri = todoInput.querySelector('.input-pri').value;
+        let todoNotes = todoInput.querySelector('.input-note').value;
+        todoNotes = todoNotes.replaceAll('\n', ' ');
+        console.log(todoName);
+        return {'name': todoName, 'date': todoDate, 'priority': todoPri, 'notes': todoNotes};
+    };
+
+    
+
     createMain();
 
     
-    return {updateMain, dispInfo, toggleDone, deleteDone}
+    return {updateMain, dispInfo, toggleDone, deleteDone, dispForm, getForm}
 })();
 export default mainDom;

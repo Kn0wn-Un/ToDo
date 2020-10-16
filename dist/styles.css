@@ -158,3 +158,52 @@ input:focus {
     position: relative;
     top: 10px
 }
+.todo-input {
+    width: 50%;
+    border: 2px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px 5px black;
+    position: relative;
+    top: -25px;
+}
+.input-name {
+    width: 50%;
+}
+.input-date {
+    background-color: black;
+    border: none;
+    color: white;
+    width: 150px;
+}
+.input-pri {
+    display: block;
+    margin: 10px 0px;
+}
+.input-note {
+    display: block;
+    margin-bottom: 10px;
+    width: 50%;
+}
+.btn {
+    display: flex;
+    flex-direction: row;
+}
+.add-btn, .cancel-btn {
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 18px;
+    box-shadow: 5px 5px 5px black;
+}
+.add-btn {
+    background-color: black;
+    color: white;
+}
+.cancel-btn{
+    margin-left: 10px;
+}
+.add-btn:hover, .cancel-btn:hover {
+    transform: scale(1.1);
+}
+.input-required {
+    border-color: red;
+}
