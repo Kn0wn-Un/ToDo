@@ -1,6 +1,5 @@
 import objectFns from './object.js';
 const navDom = (()=>{
-    //let tasks = ['Project', 'Assignment', 'Trip', 'Holidays'];
     const days = ['Today', 'Tomorrow', 'Upcoming'];
     const body = document.body;
     const nav = document.querySelector('.nav');
@@ -40,6 +39,9 @@ const navDom = (()=>{
         lh.appendChild(strong);
         ul.appendChild(lh);
         for(let i = 0; i < arr.length; i++){
+            if (isTask && arr[i] === 'Today') continue;
+            if (isTask && arr[i] === 'Tomorrow') continue;
+            if (isTask && arr[i] === 'Upcoming') continue;
             let li = document.createElement('li');
             let tName = document.createElement('span');
             tName.classList.add('nav-task');
@@ -61,7 +63,7 @@ const navDom = (()=>{
 
     const createNav = () => {
         let daysList = createLists(false, days);
-        let tasksList = createLists(true, objectFns.getTasks());
+        let tasksList = createLists(true, objectFns.getTasksArr());
         addNav(daysList, tasksList);
     };
 

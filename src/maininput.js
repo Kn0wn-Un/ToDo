@@ -1,4 +1,3 @@
-import todayTodos from "./index.js";
 import mainDom from "./maindom.js";
 import objectFns from "./object.js";
 import handler from './mediator.js';
@@ -28,47 +27,43 @@ const mainInput = (() => {
         }
         return done;
     };
-    const handleCheck = ()=> {
-        let task = document.querySelector(".show-task");
+    const handleCheck = (task, taskObj)=> {
         let li = task.querySelectorAll('li');
         for(let i = 0; i < li.length - 1; i++){
             let checkBox = li[i].querySelector('.md-radio');
-            console.log(checkBox);
             let todo = li[i].querySelector('span').innerHTML;
             checkBox.addEventListener('click', ()=>{
                if(li[i].className === 'done') {
-                    todayTodos['todos'][todo]['done'] = false;
-                    console.log(todayTodos['todos']);
+                    taskObj['todos'][todo]['done'] = false;
                     mainDom.toggleDone(true, li[i]);
+                    objectFns.initDays();
                     return;
                 }
                 else {
-                    todayTodos['todos'][todo]['done'] = true;
-                    console.log(todayTodos['todos']);
+                    taskObj['todos'][todo]['done'] = true;
                     mainDom.toggleDone(false, li[i]);
+                    objectFns.initDays();
                 } 
             });
         }
     };
-    const handleClear = ()=>{
-        let task = document.querySelector('.show-task');
+    const handleClear = (task, taskObj)=>{
         let clear = task.querySelector('.md-clear');
         clear.addEventListener('click', ()=>{
             let done = getDone();
             for(let i = 0; i < done.length; i++){
                 let todo = done[i].querySelector('span').innerHTML;
                 mainDom.deleteDone(done[i].parentNode, done[i]);
-                delete todayTodos['todos'][todo];
-                console.log(todayTodos['todos']);
+                delete taskObj['todos'][todo];
+                objectFns.initDays();
             }
         });
     };
-    const showTodo = ()=> {
-        let task = document.querySelector('.show-task');
+    const showTodo = (task, taskObj)=> {
         let todos = task.querySelectorAll('span');
         for(let i = 0; i < todos.length; i++){
             todos[i].addEventListener('click', ()=>{
-                let obj = todayTodos['todos'][todos[i].innerHTML];
+                let obj = taskObj['todos'][todos[i].innerHTML];
                 if(todos[i].parentNode.querySelector('.info')) {
                     todos[i].classList.remove('todo-select');
                     todos[i].parentNode.removeChild(
@@ -76,14 +71,12 @@ const mainInput = (() => {
                     );
                     return;
                 }
-                mainDom.dispInfo(todos[i].parentNode, obj);//remove obj dependency
+                mainDom.dispInfo(todos[i].parentNode, obj);
             });
         }
     };
-    const addTodo = ()=>{
-        let task = document.querySelector('.show-task');
+    const addTodo = (task, taskObj)=>{
         let addLi = task.querySelector('.add-todo');
-        let taskName = task.querySelector('.task-name').innerHTML;
         let add = task.querySelector('.add-task');
         add.addEventListener('click', ()=>{
             add.style.visibility = 'hidden';
@@ -95,19 +88,19 @@ const mainInput = (() => {
             btns.add.addEventListener('click', ()=>{
                 let newTodo = mainDom.getForm();
                 if(newTodo === '')  return;
-                objectFns.addObj(todayTodos, newTodo);
-                console.log(todayTodos);
-                //addLi.removeChild(addLi.querySelector('.todo-input'));
-                //add.style.visibility = 'visible';
-                handler.mainRefresh(todayTodos);
+                objectFns.addObj(taskObj['taskName'], newTodo);
+                handler.mainRefresh(taskObj);
             });
         });
     }
     const addHandlers = ()=>{
-        handleCheck();
-        handleClear();
-        showTodo();
-        addTodo();
+        let task = document.querySelector('.show-task');
+        let taskName = task.querySelector('.task-name').innerHTML;
+        let taskObj = objectFns.getTask(taskName);
+        handleCheck(task, taskObj);
+        handleClear(task, taskObj);
+        showTodo(task, taskObj);
+        addTodo(task, taskObj);
     };
     return {addHandlers}
 })();

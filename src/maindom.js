@@ -31,7 +31,6 @@ const mainDom = (()=>{
 
 
     const dispTask = (task) => {
-        console.log(task);
         let main = document.querySelector('.main');
         let tasksDiv = document.createElement('div');
         tasksDiv.classList.add('show-task'); 
@@ -234,7 +233,6 @@ const mainDom = (()=>{
         let todoPri = todoInput.querySelector('.input-pri').value;
         let todoNotes = todoInput.querySelector('.input-note').value;
         todoNotes = todoNotes.replaceAll('\n', ' ');
-        console.log(todoName);
         return {'name': todoName, 'date': todoDate, 'priority': todoPri, 'notes': todoNotes};
     };
 
