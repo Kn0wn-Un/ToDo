@@ -1,7 +1,6 @@
 import navDom from "./navdom.js";
 const navButtons= (() => {
     const inpHandler = () => {
-        let task;
         const addTask = document.querySelector('#addTask');
         addTask.addEventListener('click', ()=>{
             let form = navDom.inputTask();

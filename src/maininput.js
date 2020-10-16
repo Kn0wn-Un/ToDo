@@ -1,6 +1,8 @@
 import todayTodos from "./index.js";
 import mainDom from "./maindom.js";
-import objectFns from "./object.js"
+import objectFns from "./object.js";
+import handler from './mediator.js';
+
 const mainInput = (() => {
     const getNotDone = ()=> {
         let main = document.querySelector(".main");
@@ -97,7 +99,7 @@ const mainInput = (() => {
                 console.log(todayTodos);
                 //addLi.removeChild(addLi.querySelector('.todo-input'));
                 //add.style.visibility = 'visible';
-                mainDom.updateMain(todayTodos);
+                handler.mainRefresh(todayTodos);
             });
         });
     }

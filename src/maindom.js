@@ -31,6 +31,7 @@ const mainDom = (()=>{
 
 
     const dispTask = (task) => {
+        console.log(task);
         let main = document.querySelector('.main');
         let tasksDiv = document.createElement('div');
         tasksDiv.classList.add('show-task'); 
@@ -59,9 +60,11 @@ const mainDom = (()=>{
             li.appendChild(radio);
             li.appendChild(todo);
             if(todos[i]['date'] != ''){
-                let date = document.createElement('code');
-                date.innerHTML = todos[i]['date'];
-                li.appendChild(date);
+                let d = document.createElement('code');
+                let temp = new Date(todos[i]['date']);
+                let forDate = date.format(temp, 'DD MMM');
+                d.innerHTML = forDate;
+                li.appendChild(d);
             }
             let pri = document.createElement('div');
             pri.classList.add('material-icons');
@@ -220,7 +223,7 @@ const mainDom = (()=>{
     const getForm = ()=> {
         let todoInput = document.querySelector('.todo-input');
         let todoName = todoInput.querySelector('.input-name');
-        if (todoName === '')  
+        if (todoName.value === '')  
         {
             todoName.classList.add('input-required');
             return '';
