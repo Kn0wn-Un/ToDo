@@ -10,4 +10,10 @@ const navRefresh = ()=>{
     navDom.createNav();
     navButtons.taskHandler();
 }
-export default {mainRefresh, navRefresh};
+const fullRefresh = (task)=>{
+    mainDom.updateMain(task);
+    mainInput.addHandlers();
+    navDom.createNav();
+    navButtons.taskHandler();
+}
+export default {mainRefresh, navRefresh, fullRefresh};

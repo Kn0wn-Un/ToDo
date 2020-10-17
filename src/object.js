@@ -35,6 +35,7 @@ let objectFns = (() => {
             if(i === name)
                 delete tasks[i];
         }
+        console.log(tasks);
         initDays();
     }
     const setToday = () => {

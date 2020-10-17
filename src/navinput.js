@@ -1,14 +1,14 @@
 import navDom from "./navdom.js";
 import mediator from "./mediator.js"
-import objectFns from "./object.js"
+import objectFns from "./object.js";
 const navButtons= (() => {
     const dispTasks = () =>{
         const nav = document.querySelector('.nav');
         const lis = nav.querySelectorAll('li');
         for(let i = 0; i < lis.length; i++){
-           lis[i].addEventListener('click', ()=>{
-                let task = lis[i].querySelector('span');
-                task = objectFns.getTask(task.innerHTML);
+            let s = lis[i].querySelector('.nav-task');
+            s.addEventListener('click', ()=>{
+                let task = objectFns.getTask(s.innerHTML);
                 mediator.mainRefresh(task);
            });
         }
@@ -32,9 +32,12 @@ const navButtons= (() => {
         let delbtns = document.querySelectorAll('.md-del');
         for(let i = 0; i < delbtns.length; i++){
             delbtns[i].addEventListener('click', ()=>{
-                mediator.mainRefresh(objectFns.getTask('Today'));
-                objectFns.delTask(delbtns[i].previousSibling.textContent);
+                objectFns.delTask(delbtns[i].previousSibling.innerHTML);
                 navDom.removeTask(delbtns[i].parentNode);
+                if (i === 0)
+                    mediator.fullRefresh(objectFns.getTask('Today'));
+                else        
+                    mediator.fullRefresh(objectFns.getTask(delbtns[i-1].previousSibling.innerHTML));
             });
         }
     }
