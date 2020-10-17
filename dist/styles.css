@@ -21,6 +21,7 @@ body{
 .material-icons.md-lh {
     position: relative;
     top: 3px;
+    color: rgb(219, 58, 52);
 }
 .material-icons.md-del {
     position: relative;
@@ -45,6 +46,7 @@ body{
 .material-icons.md-clear{
     font-size: 42px;
     align-self:flex-start;
+    color: rgb(219, 58, 52);
 }
 .material-icons.navinput {
     font-size: 32px;
@@ -62,6 +64,7 @@ body{
 .nav lh{
     border-bottom: 2px solid black;
     font-size: 24px;
+    color: rgb(7, 42, 200);
 }
 .nav ul{
     margin-top: 24px;
@@ -86,9 +89,10 @@ body{
     font-size: 21px;
 }
 .main{
-    width: 100%;
+    width: 80%;
     overflow: auto;
     order: 2;
+    margin: 0px 100px;
 }
 .main .done{
     color: rgba(0, 0, 0, 0.5);
@@ -96,22 +100,25 @@ body{
 }
 .greeting{
     text-align: center;
-    font-size: 75px;
+    font-size: 70px;
+    color: rgb(7, 42, 200);
 }
 .show-task{
     margin: 50px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
+    background-color:rgb(222, 226, 255);
+    box-shadow: 5px 5px 5px grey;
 }
 .task-name{
-    font-size: 24px;
+    font-size: 30px;
     border-bottom: 2px solid black;
+    color: rgb(216, 17, 89);
 }
 .task-todo{
     list-style: none;
-    background-color: rgb(229, 229, 229); 
     margin-top: 0px;
-    box-shadow: 5px 5px 5px grey;
 }
 .task-todo li{  
     margin: 10px 0px 10px 0px;
@@ -119,7 +126,7 @@ body{
     min-height: 35px;
 }
 .todos:hover{  
-    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid royalblue;;
 }
 code {
     font-size: 18px;
@@ -141,7 +148,7 @@ input:focus {
     border-color: green
 }
 .todo-select {
-    border-bottom: 2px solid rgb(0, 0, 0);
+    border-bottom: 2px solid royalblue;
 }
 .info {
     margin: 20px 0px 20px 45px;
@@ -150,7 +157,8 @@ input:focus {
     margin: 0px 0px 10px 0px;
 }
 .notes-head, .pri-head {
-    text-decoration: underline;
+    font-style: italic;
+    color: rgb(7, 42, 200);
 }
 .note {
     font-style: italic;
@@ -217,4 +225,18 @@ input:focus {
 .nav-task {
     flex-grow: 100;
     padding: 5px 0px;
+}
+img {
+    height: 60px;
+    width: 150px;
+}
+a {
+    display: block;
+    margin-top: 100%;
+    margin-left: 20%;
+}
+@media screen and (max-width: 1000px) {
+    .main {
+        margin: 0px;
+    }
 }

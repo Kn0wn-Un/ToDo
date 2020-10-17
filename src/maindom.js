@@ -1,16 +1,9 @@
 import date from 'date-and-time';
 const mainDom = (()=>{
-    const tmrTodos = {'taskName': 'Tomorrow',
-        'todos': {  'Attend ME class': true, 
-                    'Attend UP class':false, 
-                    'Attend DBMS class': false, 
-                    'Attend CN class': false,
-                }
-            };
     const body = document.body;
 
 
-
+    //create main div
     const createMain = () => {
         let main = document.createElement('div');   
         main.classList.add('main');
@@ -19,17 +12,17 @@ const mainDom = (()=>{
     };
 
 
-
+    //add greeting
     const addGreet = ()=>{
         let main = document.querySelector('.main');  
         let greet = document.createElement('div');
         greet.classList.add('greeting');
-        greet.innerHTML = 'To-Do';
+        greet.innerHTML = `Let's do something Today!`;
         main.appendChild(greet);
     };
 
 
-
+    //displaying todos of tasks
     const dispTask = (task) => {
         let main = document.querySelector('.main');
         let tasksDiv = document.createElement('div');
@@ -48,7 +41,7 @@ const mainDom = (()=>{
             let radio = document.createElement('div');
             radio.classList.add('material-icons', 'md-radio');
             if(todos[i].done){
-                radio.innerHTML = 'radio_button_checked';
+                radio.innerHTML = 'check_circle';
                 li.classList.add('done');
             }
             else    
@@ -97,7 +90,7 @@ const mainDom = (()=>{
     };
 
 
-
+    //display extra info of task
     const dispInfo = (li, todo)=> {
         let td = li.querySelector('span');
         td.classList.add('todo-select'); 
@@ -140,7 +133,7 @@ const mainDom = (()=>{
     };
 
 
-
+    //toggle done and undone tasks
     const toggleDone = (isDone, li)=> {
         if(isDone){
             li.classList.remove('done');
@@ -148,18 +141,18 @@ const mainDom = (()=>{
         }
         else{
             li.classList.add('done');
-            li.querySelector('.md-radio').innerHTML = 'radio_button_checked';
+            li.querySelector('.md-radio').innerHTML = 'check_circle';
         }    
     };
 
 
-
+    //remove done task
     const deleteDone = (par, li)=> {
         par.removeChild(li);
     };
 
 
-
+    //function calling to change tasks
     const updateMain = (task)=>{
         let main = document.querySelector('.main');  
         main.innerHTML = '';
@@ -168,7 +161,7 @@ const mainDom = (()=>{
     };
 
 
-    
+    //display input form for new todo
     const dispForm = (task)=>{
         let li = task.querySelector('.add-todo');
         let todoInput = document.createElement('div');
@@ -228,7 +221,7 @@ const mainDom = (()=>{
     }
 
 
-
+    //get form data
     const getForm = ()=> {
         let todoInput = document.querySelector('.todo-input');
         let todoName = todoInput.querySelector('.input-name');

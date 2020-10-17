@@ -2,6 +2,7 @@ import navDom from "./navdom.js";
 import mediator from "./mediator.js"
 import objectFns from "./object.js";
 const navButtons= (() => {
+    //shows todos of tasks in main on click
     const dispTasks = () =>{
         const nav = document.querySelector('.nav');
         const lis = nav.querySelectorAll('li');
@@ -12,7 +13,8 @@ const navButtons= (() => {
                 mediator.mainRefresh(task);
            });
         }
-    }
+    };
+    //handles form input
     const inpHandler = () => {
         const addTask = document.querySelector('#addTask');
         addTask.addEventListener('click', ()=>{
@@ -28,6 +30,7 @@ const navButtons= (() => {
             });
         });
     };
+    //deletes tasks from nav
     const delHandler = () => {
         let delbtns = document.querySelectorAll('.md-del');
         for(let i = 0; i < delbtns.length; i++){
@@ -41,6 +44,7 @@ const navButtons= (() => {
             });
         }
     }
+    //combined
     const taskHandler = ()=>{
         dispTasks();
         inpHandler();

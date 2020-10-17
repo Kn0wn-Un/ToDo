@@ -5,7 +5,7 @@ const navDom = (()=>{
     const nav = document.querySelector('.nav');
 
     
-
+    //adds tasks and days to nav
     const addNav = (daysList, tasksList) => {
         nav.innerHTML = '';
         nav.appendChild(daysList);
@@ -15,11 +15,18 @@ const navDom = (()=>{
         addTask.classList.add('add-task', 'material-icons', 'md-32');
         addTask.innerHTML = 'add_circle_outline';
         nav.appendChild(addTask);
+        let link = document.createElement('a');
+        let git = document.createElement("img");
+        git.style.alt = "View source on GitHub";
+        git.src = "https://pngimg.com/uploads/github/github_PNG15.png";
+        link.href="#";
+        link.appendChild(git);
+        nav.appendChild(link);
         body.appendChild(nav);
     };
     
 
-
+    //creates lists for both days and tasks
     const createLists = (isTask, arr) => {
         let ul = document.createElement('ul');
         let lh = document.createElement('lh');
@@ -61,7 +68,7 @@ const navDom = (()=>{
     };
 
 
-
+    //combines creating list
     const createNav = () => {
         let daysList = createLists(false, days);
         let tasksList = createLists(true, objectFns.getTasksArr());
@@ -69,7 +76,7 @@ const navDom = (()=>{
     };
 
 
-
+    //form to input new task
     const inputTask = ()=> {
         let taskList = document.querySelector('.tasks-list');
         let input = document.createElement('input');
@@ -89,7 +96,7 @@ const navDom = (()=>{
     };
 
 
-
+    //removes form from nav
     const removeInput = ()=>{
         let taskList = document.querySelector('.tasks-list');
         let input = taskList.querySelector('input');
@@ -103,7 +110,7 @@ const navDom = (()=>{
     }
 
     
-
+    //removes task from nav
     const removeTask = (li) => {
         let taskList = document.querySelector('.tasks-list');
         taskList.removeChild(li);

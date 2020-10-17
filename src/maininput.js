@@ -15,6 +15,7 @@ const mainInput = (() => {
         }
         return notDone;
     };
+    //array of done todos(li)
     const getDone = ()=> {
         let main = document.querySelector(".main");
         let li = main.querySelectorAll('li');
@@ -27,6 +28,7 @@ const mainInput = (() => {
         }
         return done;
     };
+    //handles click of done and undone
     const handleCheck = (task, taskObj)=> {
         let li = task.querySelectorAll('li');
         let length = li.length - 1;
@@ -50,6 +52,7 @@ const mainInput = (() => {
             });
         }
     };
+    //handles clear all button
     const handleClear = (task, taskObj)=>{
         let clear = task.querySelector('.md-clear');
         clear.addEventListener('click', ()=>{
@@ -61,6 +64,7 @@ const mainInput = (() => {
             }
         });
     };
+    //handles click of todo
     const showTodo = (task, taskObj)=> {
         let todos = task.querySelectorAll('span');
         for(let i = 0; i < todos.length; i++){
@@ -77,6 +81,7 @@ const mainInput = (() => {
             });
         }
     };
+    //handles add and cancel buttons
     const addTodo = (task, taskObj)=>{
         let addLi = task.querySelector('.add-todo');
         if (!addLi) return;
@@ -96,6 +101,7 @@ const mainInput = (() => {
             });
         });
     }
+    //combined 
     const addHandlers = ()=>{
         let task = document.querySelector('.show-task');
         let taskName = task.querySelector('.task-name').innerHTML;

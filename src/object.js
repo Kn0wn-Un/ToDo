@@ -1,5 +1,6 @@
 let objectFns = (() => {
     let tasks = {};
+    //get tasks name in arr
     const getTasksArr = ()=>{ 
         let arr = [];
         for(let i in tasks){
@@ -7,9 +8,11 @@ let objectFns = (() => {
         } 
         return arr;
     }
+    //get a particular task
     const getTask = (name)=>{
         return tasks[name];
     }
+    //add new todo to a task
     const addObj = (name, todo)=> {
         let temp = {};
         temp['notes'] = todo['notes']; 
@@ -24,6 +27,7 @@ let objectFns = (() => {
             return;
         initDays();
     };
+    //remove a todo from a task
     const delObj = (name, todo)=> {
         if (name['taskName'] === 'Today' ||
             name['taskName'] === 'Tomorrow' ||
@@ -33,6 +37,7 @@ let objectFns = (() => {
         delete name['todos'][todo];
         initDays();
     }
+    //add a task 
     const addTasks = (name) => {
         let temp = {};
         name =  name.charAt(0).toUpperCase() + name.slice(1);
@@ -40,13 +45,15 @@ let objectFns = (() => {
         temp['todos'] = {};
         tasks[name] = temp;
     }
+    //remove a task
     const delTask = (name) => {
         for(let i in tasks) {
             if(i === name)
                 delete tasks[i];
         }
         initDays();
-    }
+    };
+    //sets todos for the current day
     const setToday = () => {
         addTasks('Today');
         for(let i in tasks){
@@ -66,7 +73,8 @@ let objectFns = (() => {
                 }
             }
         }
-    }
+    };
+    //sets todos for the next day
     const setTomorrow = () => {
         addTasks('Tomorrow');
         for(let i in tasks){
@@ -87,7 +95,8 @@ let objectFns = (() => {
                 }
             }
         }
-    }
+    };
+    //sets todos for upcoming days
     const setUpcoming = () => {
         addTasks('Upcoming');
         for(let i in tasks){
@@ -109,6 +118,7 @@ let objectFns = (() => {
             }
         }
     }
+    //change todo as done or undone
     const markDone = (isDone, name, todo)=>{
         if (name['taskName'] === 'Today' ||
         name['taskName'] === 'Tomorrow' ||
@@ -118,6 +128,7 @@ let objectFns = (() => {
         name['todos'][todo]['done'] = isDone;
         initDays();
     }
+    //store user tasks in local storage 
     const addEntry = () => {
         let temp = {};
         for(let i in tasks){
@@ -130,10 +141,12 @@ let objectFns = (() => {
         }
         localStorage.setItem("userTodo", JSON.stringify(temp));
     };
+    //get stored tasks
     const getStored = () => {
         tasks = JSON.parse(localStorage.getItem("userTodo"));
         initDays();
     };
+    //combined
     const initDays = () => {
         setToday();
         setTomorrow();
