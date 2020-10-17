@@ -31,7 +31,6 @@ let objectFns = (() => {
                 name = getTask(name['todos'][todo]['from']);
             }
         delete name['todos'][todo];
-        console.log(name);
         initDays();
     }
     const addTasks = (name) => {
@@ -46,7 +45,6 @@ let objectFns = (() => {
             if(i === name)
                 delete tasks[i];
         }
-        console.log(tasks);
         initDays();
     }
     const setToday = () => {
@@ -120,7 +118,6 @@ let objectFns = (() => {
         name['taskName'] === 'Upcoming'){
             name = getTask(name['todos'][todo]['from']);
         }
-        console.log(name);
         name['todos'][todo]['done'] = isDone;
         initDays();
     }

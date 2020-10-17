@@ -85,7 +85,11 @@ const mainDom = (()=>{
         addTodo.innerHTML = 'add_circle_outline';
         li.appendChild(addTodo);
         li.classList.add('add-todo');
-        ul.appendChild(li);
+        if (!(task['taskName'] === 'Today' ||
+            task['taskName'] === 'Tomorrow' ||
+            task['taskName'] === 'Upcoming')){
+                ul.appendChild(li);
+            }
         tasksDiv.appendChild(taskName);
         tasksDiv.appendChild(clear);
         tasksDiv.appendChild(ul);

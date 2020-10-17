@@ -29,7 +29,12 @@ const mainInput = (() => {
     };
     const handleCheck = (task, taskObj)=> {
         let li = task.querySelectorAll('li');
-        for(let i = 0; i < li.length - 1; i++){
+        let length = li.length - 1;
+        if(taskObj['taskName'] === 'Today' ||
+            taskObj['taskName'] === 'Tomorrow' ||
+            taskObj['taskName'] === 'Upcoming')
+                length = li.length;
+        for(let i = 0; i < length; i++){
             let checkBox = li[i].querySelector('.md-radio');
             let todo = li[i].querySelector('span').innerHTML;
             checkBox.addEventListener('click', ()=>{
@@ -74,6 +79,7 @@ const mainInput = (() => {
     };
     const addTodo = (task, taskObj)=>{
         let addLi = task.querySelector('.add-todo');
+        if (!addLi) return;
         let add = task.querySelector('.add-task');
         add.addEventListener('click', ()=>{
             add.style.visibility = 'hidden';
