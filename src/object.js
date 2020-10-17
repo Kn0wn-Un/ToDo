@@ -48,8 +48,7 @@ let objectFns = (() => {
         initDays();
     }
     const setToday = () => {
-        let tObj = getTask('Today');
-        tObj.todos = {};
+        addTasks('Today');
         for(let i in tasks){
             if (i === 'Today' ||
             i === 'Tomorrow' ||
@@ -69,8 +68,7 @@ let objectFns = (() => {
         }
     }
     const setTomorrow = () => {
-        let tObj = getTask('Tomorrow');
-        tObj.todos = {};
+        addTasks('Tomorrow');
         for(let i in tasks){
             if (i === 'Today' ||
             i === 'Tomorrow' ||
@@ -91,8 +89,7 @@ let objectFns = (() => {
         }
     }
     const setUpcoming = () => {
-        let tObj = getTask('Upcoming');
-        tObj.todos = {};
+        addTasks('Upcoming');
         for(let i in tasks){
             if (i === 'Today' ||
             i === 'Tomorrow' ||
@@ -121,11 +118,30 @@ let objectFns = (() => {
         name['todos'][todo]['done'] = isDone;
         initDays();
     }
+    const addEntry = () => {
+        let temp = {};
+        for(let i in tasks){
+            if(i === 'Today' ||
+            i === 'Tomorrow' ||
+            i === 'Upcoming'){
+                continue;
+            }
+            temp[tasks[i]['taskName']] = tasks[i];
+        }
+        localStorage.setItem("userTodo", JSON.stringify(temp));
+    };
+    const getStored = () => {
+        tasks = JSON.parse(localStorage.getItem("userTodo"));
+        initDays();
+    };
     const initDays = () => {
         setToday();
         setTomorrow();
         setUpcoming();
+        addEntry();
     }
-    return {addObj, delObj, addTasks, delTask, getTask, getTasksArr, markDone, initDays}
+    return {addObj, delObj, addTasks, delTask, 
+        getTask, getTasksArr, markDone, initDays,
+        addEntry, getStored}
 })();
 export default objectFns;

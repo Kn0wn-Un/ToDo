@@ -171,7 +171,6 @@ const mainDom = (()=>{
         let inputName = document.createElement('input');
         inputName.placeholder = 'I want to..';
         inputName.classList.add('input-name');
-
         let dateHead = document.createElement('div');
         dateHead.style.marginTop = '5px';
         dateHead.innerHTML = 'by, ';
@@ -218,6 +217,7 @@ const mainDom = (()=>{
         todoInput.appendChild(inputNote);
         todoInput.appendChild(btn);
         li.appendChild(todoInput);
+        inputName.focus();
         return {add, cancel};
     }
 
