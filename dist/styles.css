@@ -25,6 +25,7 @@ body{
     position: relative;
     float: left;
     right: 5px;
+    top: 5px;
 }
 .material-icons.md-priority-red, .material-icons.md-priority-green {
     position: relative;
@@ -64,7 +65,6 @@ body{
 .nav li{
     margin-top: 15px;
     cursor: pointer;
-    padding: 5px;
     display: flex;
 }
 .nav li:hover{
@@ -209,5 +209,6 @@ input:focus {
     border-color: red;
 }
 .nav-task {
-    flex-grow: 1;
+    flex-grow: 100;
+    padding: 5px 0px;
 }

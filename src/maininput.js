@@ -34,15 +34,13 @@ const mainInput = (() => {
             let todo = li[i].querySelector('span').innerHTML;
             checkBox.addEventListener('click', ()=>{
                if(li[i].className === 'done') {
-                    taskObj['todos'][todo]['done'] = false;
+                    objectFns.markDone(false, taskObj, todo);
                     mainDom.toggleDone(true, li[i]);
-                    objectFns.initDays();
                     return;
                 }
                 else {
-                    taskObj['todos'][todo]['done'] = true;
+                    objectFns.markDone(true, taskObj, todo);
                     mainDom.toggleDone(false, li[i]);
-                    objectFns.initDays();
                 } 
             });
         }
@@ -54,8 +52,7 @@ const mainInput = (() => {
             for(let i = 0; i < done.length; i++){
                 let todo = done[i].querySelector('span').innerHTML;
                 mainDom.deleteDone(done[i].parentNode, done[i]);
-                delete taskObj['todos'][todo];
-                objectFns.initDays();
+                objectFns.delObj(taskObj, todo);
             }
         });
     };
