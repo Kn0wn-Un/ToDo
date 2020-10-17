@@ -4,6 +4,7 @@ const navDom = (()=>{
     const body = document.body;
     const nav = document.querySelector('.nav');
 
+    
 
     const addNav = (daysList, tasksList) => {
         nav.innerHTML = '';

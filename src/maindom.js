@@ -24,7 +24,7 @@ const mainDom = (()=>{
         let main = document.querySelector('.main');  
         let greet = document.createElement('div');
         greet.classList.add('greeting');
-        greet.innerHTML = 'Hello There!';
+        greet.innerHTML = 'To-Do';
         main.appendChild(greet);
     };
 
@@ -152,9 +152,13 @@ const mainDom = (()=>{
         }    
     };
 
+
+
     const deleteDone = (par, li)=> {
         par.removeChild(li);
     };
+
+
 
     const updateMain = (task)=>{
         let main = document.querySelector('.main');  
@@ -163,6 +167,8 @@ const mainDom = (()=>{
         dispTask(task);
     };
 
+
+    
     const dispForm = (task)=>{
         let li = task.querySelector('.add-todo');
         let todoInput = document.createElement('div');
