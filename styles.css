@@ -23,7 +23,7 @@ body{
 }
 .material-icons.md-del {
     position: relative;
-    float: right;
+    float: left;
     right: 5px;
 }
 .material-icons.md-priority-red, .material-icons.md-priority-green {
@@ -65,6 +65,7 @@ body{
     margin-top: 15px;
     cursor: pointer;
     padding: 5px;
+    display: flex;
 }
 .nav li:hover{
     background-color: royalblue;
@@ -206,4 +207,7 @@ input:focus {
 }
 .input-required {
     border-color: red;
+}
+.nav-task {
+    flex-grow: 1;
 }
