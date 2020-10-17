@@ -19,7 +19,7 @@ const navDom = (()=>{
         let git = document.createElement("img");
         git.style.alt = "View source on GitHub";
         git.src = "https://pngimg.com/uploads/github/github_PNG15.png";
-        link.href="#";
+        link.href="https://github.com/Kn0wn-Un/ToDo";
         link.appendChild(git);
         nav.appendChild(link);
         body.appendChild(nav);
