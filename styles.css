@@ -9,6 +9,7 @@ body{
     flex-direction: row;
     height: 100%;
     font-size: 21px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .material-icons{
     cursor: pointer;
@@ -48,11 +49,15 @@ body{
 .material-icons.navinput {
     font-size: 32px;
 }
+.material-icons.navinput:hover {
+    transform: scale(1.1);
+}
 .nav{
     background-color:rgb(229, 229, 229);
     width: 300px;
     order: 1;
     overflow: auto;
+    box-shadow: 5px 5px 5px grey;
 }
 .nav lh{
     border-bottom: 2px solid black;
@@ -91,7 +96,7 @@ body{
 }
 .greeting{
     text-align: center;
-    font-size: 64px;
+    font-size: 75px;
 }
 .show-task{
     margin: 50px;
@@ -106,6 +111,7 @@ body{
     list-style: none;
     background-color: rgb(229, 229, 229); 
     margin-top: 0px;
+    box-shadow: 5px 5px 5px grey;
 }
 .task-todo li{  
     margin: 10px 0px 10px 0px;
